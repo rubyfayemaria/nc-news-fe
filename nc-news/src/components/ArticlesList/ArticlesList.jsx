@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import fetchArticles from "../../api";
+import ArticleCard from "../ArticleCard/ArticleCard";
 import './ArticlesList.css'
 
 const ArticlesList = () => {
@@ -15,12 +16,8 @@ const ArticlesList = () => {
         <section>
             {articles.map((article) => {
                 return (
-                    <div key={article.article_id}>
-                        <h4>{article.title}</h4>
-                        <p>By {article.author}</p>
-                        <img src={article.article_img_url} alt="article image" className="article-img"/>
-                        <p>Votes: {article.votes}</p>
-                        <p>{article.comment_count} comments have been left on this post</p>
+                    <div key={article.article_id} className="article-box">
+                        <ArticleCard article={article}/>
                     </div>
                 )
             })}
