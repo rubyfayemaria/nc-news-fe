@@ -7,13 +7,17 @@ import { Link } from "react-router-dom";
 const SingleArticle = () => {
     const { article_id } = useParams();
     const [currArticle, setCurrArticle] = useState({})
+    const [isLoading, setIsLoading] = useState(true); 
 
     useEffect(() => {
+        setIsLoading(true)
         fetchArticleById(article_id).then((article) => {
             setCurrArticle(article)
+            setIsLoading(false)
         })
     }, [article_id])
 
+    if (isLoading) return <p>Loading...</p>
     return (
         <>
         <h2>{currArticle.title}</h2>
