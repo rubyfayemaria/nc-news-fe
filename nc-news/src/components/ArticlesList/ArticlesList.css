@@ -1,0 +1,10 @@
+.article-img {
+    width: 12rem;
+    height: 9rem;
+}
+
+.article-box {
+    border: solid;
+    margin: 100px;
+    padding: 20px;
+}
