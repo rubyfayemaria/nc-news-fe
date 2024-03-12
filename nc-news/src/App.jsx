@@ -5,6 +5,7 @@ import Homepage from './components/Homepage/Homepage';
 import { Route, Routes } from 'react-router-dom';
 import TopicsList from './components/TopicsList/TopicsList';
 import SingleArticle from './components/SingleArticle/SingleArticle';
+import Comments from './components/Comments/Comments';
 
 function App() {
   const [user, setUser] = useState({
@@ -28,6 +29,10 @@ function App() {
         <Route
           path='/articles/:article_id'
           element= {<SingleArticle />}
+        ></Route>
+        <Route
+          path='/articles/:article_id/comments'
+          element= {<Comments />}
         ></Route>
       </Routes>
     </>
