@@ -23,3 +23,11 @@ export const fetchArticleById = (article_id) => {
         return response.data.article;
     })
 }
+
+export const fetchCommentsByArticle = (article_id) => {
+    return axios
+    .get(`https://nc-news-mavp.onrender.com/api/articles/${article_id}/comments`)
+    .then((response) => {
+        return response.data;
+    })
+}

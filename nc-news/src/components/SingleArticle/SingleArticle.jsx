@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticleById } from '../../api';
+import { Link } from "react-router-dom";
 
 
 const SingleArticle = () => {
@@ -21,7 +22,7 @@ const SingleArticle = () => {
         <img src={currArticle.article_img_url} alt="article image" className='article-img'/>
         <p>{currArticle.body}</p>
         <section>
-            <p>Comments</p>
+            <Link to={`/articles/${article_id}/comments`}><p>Comments</p></Link>
         </section>
         </>
     )
