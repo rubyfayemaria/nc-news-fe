@@ -3,6 +3,7 @@ import {fetchArticles} from "../../api";
 import ArticleCard from "../ArticleCard/ArticleCard";
 import './ArticlesList.css'
 
+
 const ArticlesList = () => {
     const [articles, setArticles] = useState([]);
 
@@ -26,3 +27,4 @@ const ArticlesList = () => {
 }
 
 export default ArticlesList;
+

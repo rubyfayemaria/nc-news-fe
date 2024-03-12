@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ArticleCard = ({article}) => {
     const date = new Date(article.created_at)
     const day = date.getDate();
@@ -10,7 +12,7 @@ const ArticleCard = ({article}) => {
     
     return (
         <>
-            <h4>{article.title}</h4>
+            <Link to={`/articles/${article.article_id}`}><h4>{article.title}</h4></Link>
             <p>By {article.author}</p>
             <img src={article.article_img_url} alt="article image" className="article-img"/>
             <p>Votes: {article.votes}</p>

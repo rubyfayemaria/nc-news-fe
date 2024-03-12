@@ -4,6 +4,7 @@ import Header from './components/Header/Header'
 import Homepage from './components/Homepage/Homepage';
 import { Route, Routes } from 'react-router-dom';
 import TopicsList from './components/TopicsList/TopicsList';
+import SingleArticle from './components/SingleArticle/SingleArticle';
 
 function App() {
   const [user, setUser] = useState({
@@ -23,6 +24,10 @@ function App() {
         <Route
           path='/topics'
           element= {<TopicsList />}
+        ></Route>
+        <Route
+          path='/articles/:article_id'
+          element= {<SingleArticle />}
         ></Route>
       </Routes>
     </>

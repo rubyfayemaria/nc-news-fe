@@ -16,4 +16,10 @@ export const fetchTopics = () => {
     })
 }
 
-
+export const fetchArticleById = (article_id) => {
+    return axios
+    .get(`https://nc-news-mavp.onrender.com/api/articles/${article_id}`)
+    .then((response) => {
+        return response.data.article;
+    })
+}
