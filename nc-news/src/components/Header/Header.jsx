@@ -6,8 +6,8 @@ const Header = () => {
         <h1>NC NEWS</h1>
         <section>
             <nav id="nav" className="nav">
-                <Link >Home</Link>
-                <Link>Topics</Link>
+                <Link to='/'>Home</Link>
+                <Link to='/topics'>Topics</Link>
             </nav>
         </section>
     </>

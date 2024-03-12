@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const fetchArticles = () => {
+export const fetchArticles = () => {
     return axios 
     .get('https://nc-news-mavp.onrender.com/api/articles')
     .then((response) => {
@@ -8,4 +8,12 @@ const fetchArticles = () => {
     })
 }
 
-export default fetchArticles;
+export const fetchTopics = () => {
+    return axios
+    .get('https://nc-news-mavp.onrender.com/api/topics')
+    .then((response) => {
+        return response.data
+    })
+}
+
+

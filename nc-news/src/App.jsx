@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import './App.css'
-import ArticlesList from './components/ArticlesList/ArticlesList';
 import Header from './components/Header/Header'
 import Homepage from './components/Homepage/Homepage';
+import { Route, Routes } from 'react-router-dom';
+import TopicsList from './components/TopicsList/TopicsList';
 
 function App() {
   const [user, setUser] = useState({
@@ -14,8 +15,16 @@ function App() {
   return (
     <>
       <Header />
-      <Homepage user={user}/>
-      <ArticlesList />
+      <Routes>
+        <Route 
+          path='/'
+          element= {<Homepage user={user}/>}
+        ></Route>
+        <Route
+          path='/topics'
+          element= {<TopicsList />}
+        ></Route>
+      </Routes>
     </>
   )
 }
