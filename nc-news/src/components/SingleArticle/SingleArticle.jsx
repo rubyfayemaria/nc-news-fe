@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticleById } from '../../api';
 import { Link } from "react-router-dom";
+import AddVotes from '../AddVotes/AddVotes';
 
 
 const SingleArticle = () => {
@@ -17,7 +18,12 @@ const SingleArticle = () => {
         })
     }, [article_id])
 
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return (
+        <>
+        <p>Loading...</p>
+        <div className='loader'></div>
+        </>
+        )
     return (
         <>
         <h2>{currArticle.title}</h2>
@@ -27,6 +33,7 @@ const SingleArticle = () => {
         <p>{currArticle.body}</p>
         <section>
             <Link to={`/articles/${article_id}/comments`}><p>Comments</p></Link>
+            <AddVotes article_id={currArticle.article_id} votes={currArticle.votes}/>
         </section>
         </>
     )
