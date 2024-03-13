@@ -21,6 +21,11 @@ const Comments = () => {
         navigate(-1)
     }
 
+    if (comments.length === 0) {
+        return (
+            <p>No comments have been left on this article yet.</p>
+        )
+    }
     if (isLoading) return <p>Loading...</p>
     return (
         <>
@@ -31,7 +36,7 @@ const Comments = () => {
                 </div>
             )
         })}
-        <button onClick={goBack}>Back To Article</button>
+        <button onClick={goBack}>Back To Articles</button>
         </>
     )
 }
