@@ -44,7 +44,7 @@ const Comments = () => {
                 </div>
             )
         })}
-        <PostComments updateComments={updateComments}/>
+        <PostComments article_id={article_id} updateComments={updateComments}/>
         </section>
         <button onClick={goBack}>Back To Articles</button>
         </>

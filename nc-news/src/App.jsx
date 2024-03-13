@@ -5,7 +5,7 @@ import Homepage from './components/Homepage/Homepage';
 import { Route, Routes } from 'react-router-dom';
 import TopicsList from './components/TopicsList/TopicsList';
 import SingleArticle from './components/SingleArticle/SingleArticle';
-import Comments from './components/Comments/Comments';
+import UserContext from './components/Contexts/UserContext'
 
 function App() {
   const [user, setUser] = useState({
@@ -15,7 +15,7 @@ function App() {
   })
 
   return (
-    <>
+      <UserContext.Provider value={{user: user, setUser: setUser}}>
       <Header />
       <Routes>
         <Route 
@@ -31,7 +31,7 @@ function App() {
           element= {<SingleArticle />}
         ></Route>
       </Routes>
-    </>
+      </UserContext.Provider>
   )
 }
 
