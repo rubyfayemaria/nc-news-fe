@@ -18,6 +18,13 @@ const SingleArticle = () => {
         })
     }, [article_id])
 
+    const updateArticle = () => {
+        fetchArticleById(article_id)
+        .then((updatedArticle) => {
+            setCurrArticle(updatedArticle);
+        })
+    }
+
     if (isLoading) return (
         <>
         <p>Loading...</p>
@@ -33,7 +40,7 @@ const SingleArticle = () => {
         <p>{currArticle.body}</p>
         <section>
             <Link to={`/articles/${article_id}/comments`}><p>Comments</p></Link>
-            <AddVotes article_id={currArticle.article_id} votes={currArticle.votes}/>
+            <AddVotes article_id={currArticle.article_id} updateArticle={updateArticle}/>
         </section>
         </>
     )
