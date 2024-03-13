@@ -30,10 +30,6 @@ function App() {
           path='/articles/:article_id'
           element= {<SingleArticle />}
         ></Route>
-        <Route
-          path='/articles/:article_id/comments'
-          element= {<Comments />}
-        ></Route>
       </Routes>
     </>
   )
