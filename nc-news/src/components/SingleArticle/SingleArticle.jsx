@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticleById } from '../../api';
 import { Link } from "react-router-dom";
+import AddVotes from '../AddVotes/AddVotes';
+import Comments from '../Comments/Comments';
 
 
 const SingleArticle = () => {
@@ -17,7 +19,19 @@ const SingleArticle = () => {
         })
     }, [article_id])
 
-    if (isLoading) return <p>Loading...</p>
+    const updateArticle = () => {
+        fetchArticleById(article_id)
+        .then((updatedArticle) => {
+            setCurrArticle(updatedArticle);
+        })
+    }
+
+    if (isLoading) return (
+        <>
+        <p>Loading...</p>
+        <div className='loader'></div>
+        </>
+        )
     return (
         <>
         <h2>{currArticle.title}</h2>
@@ -26,7 +40,9 @@ const SingleArticle = () => {
         <img src={currArticle.article_img_url} alt="article image" className='article-img'/>
         <p>{currArticle.body}</p>
         <section>
-            <Link to={`/articles/${article_id}/comments`}><p>Comments</p></Link>
+            <h4>Comments</h4>
+            <Comments />
+            <AddVotes article_id={currArticle.article_id} updateArticle={updateArticle}/>
         </section>
         </>
     )

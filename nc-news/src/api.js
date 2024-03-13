@@ -31,3 +31,11 @@ export const fetchCommentsByArticle = (article_id) => {
         return response.data;
     })
 }
+
+export const updateArticleVotes = (article_id, votes) => {
+    return axios
+    .patch(`https://nc-news-mavp.onrender.com/api/articles/${article_id}`, votes)
+    .then((response) => {
+        return response.data
+    })
+}
