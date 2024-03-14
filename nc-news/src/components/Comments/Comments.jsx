@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchCommentsByArticle } from "../../api";
 import PostComments from "../PostComments/PostComments";
+import UserContext from '../Contexts/UserContext'
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 import './Comments.css'
+import DeleteComment from "../DeleteComment/DeleteComment";
 
 const Comments = () => {
     const { article_id } = useParams();
+    const { user } = useContext(UserContext);
     const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate();
@@ -42,6 +47,9 @@ const Comments = () => {
             return (
                 <div key={comment.comment_id} className='comments-box'>
                 <p><b>{comment.author}:</b> {comment.body}</p>
+                {comment.author === user.username && (
+                    <DeleteComment comment_id={comment.comment_id} updateComments={updateComments}/>
+                )}
                 </div>
             )
         })}
