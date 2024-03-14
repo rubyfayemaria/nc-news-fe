@@ -52,3 +52,11 @@ export const deleteComment = (comment_id) => {
     return axios
     .delete(`https://nc-news-mavp.onrender.com/api/comments/${comment_id}`)
 }
+
+export const getArticlesByTopic = (topic) => {
+    return axios
+    .get(`https://nc-news-mavp.onrender.com/api/articles?topic=${topic}`)
+    .then((response) => {
+        return response.data
+    })
+}

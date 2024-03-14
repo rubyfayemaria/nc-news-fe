@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import TopicsList from './components/TopicsList/TopicsList';
 import SingleArticle from './components/SingleArticle/SingleArticle';
 import UserContext from './components/Contexts/UserContext'
+import ArticlesList from './components/ArticlesList/ArticlesList';
 
 function App() {
   const [user, setUser] = useState({
@@ -29,6 +30,10 @@ function App() {
         <Route
           path='/articles/:article_id'
           element= {<SingleArticle />}
+        ></Route>
+        <Route
+          path='/articles'
+          element= {<ArticlesList />}
         ></Route>
       </Routes>
       </UserContext.Provider>

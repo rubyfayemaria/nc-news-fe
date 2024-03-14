@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {fetchTopics} from "../../api";
-import { Route, Routes } from 'react-router-dom';
 import TopicCard from "../TopicCard";
 
 const TopicsList = () => {
