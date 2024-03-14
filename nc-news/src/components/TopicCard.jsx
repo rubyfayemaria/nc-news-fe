@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom"
+
 const TopicCard = ({topic}) => {
     return (
         <>
-        <h4>{topic.slug}</h4>
+        <Link to={`/articles?topic=${topic.slug}`}><h4>{topic.slug}</h4></Link>
         <p>{topic.description}</p>
         </>
     )

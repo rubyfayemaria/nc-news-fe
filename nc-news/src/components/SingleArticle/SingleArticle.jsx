@@ -38,10 +38,10 @@ const SingleArticle = () => {
         <p>votes: {currArticle.votes}</p>
         <img src={currArticle.article_img_url} alt="article image" className='article-img'/>
         <p>{currArticle.body}</p>
+        <AddVotes article_id={currArticle.article_id} updateArticle={updateArticle}/>
         <section>
             <h4>Comments</h4>
             <Comments />
-            <AddVotes article_id={currArticle.article_id} updateArticle={updateArticle}/>
         </section>
         </>
     )
