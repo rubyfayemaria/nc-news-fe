@@ -47,3 +47,8 @@ export const postCommentOnArticle = (article_id, comment) => {
         return response.data
     })
 }
+
+export const deleteComment = (comment_id) => {
+    return axios
+    .delete(`https://nc-news-mavp.onrender.com/api/comments/${comment_id}`)
+}
