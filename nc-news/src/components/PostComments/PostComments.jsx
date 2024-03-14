@@ -1,18 +1,27 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { postCommentOnArticle } from "../../api";
 import UserContext from "../Contexts/UserContext";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const PostComments = ({article_id, updateComments}) => {
     const { user } = useContext(UserContext);
+    const [comment, setComment] = useState('');
     
-    const handleSubmit = ({body}) => {
-        const comment = {
+    const handleInputChange = (e) => {
+        setComment(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newComment = {
             username: user.username,
-            body: body
+            body: comment
         }
-        postCommentOnArticle(article_id, comment)
+        postCommentOnArticle(article_id, newComment)
         .then(() => {
             updateComments()
+            setComment('')
         })
     }
 
@@ -20,17 +29,26 @@ const PostComments = ({article_id, updateComments}) => {
         <>
         <form 
             method="post" 
-            onSubmit={(e) => {
-                e.preventDefault();
-                const formData = new FormData(e.target)
-                const body = formData.get('commentBody')
-                handleSubmit({body})
-            }}
+            onSubmit={handleSubmit}
         >
-            <label>
-                Add a comment: <input type="text" name="commentBody"/>
-            </label>
-            <button type="submit">Submit</button>
+            <TextField 
+                id="standard-multiline-felxible"
+                label="Add a comment"
+                multiline
+                maxRows={4}
+                variant="standard"
+                type="text" 
+                name="commentBody"
+                value={comment}
+                onChange={handleInputChange}
+            />
+            <Button 
+                type="submit"
+                variant="outlined"
+                size="small"
+                disabled={!comment}>
+                Submit
+            </Button>
         </form>
         </>
     )
