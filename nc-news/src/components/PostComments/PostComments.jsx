@@ -6,22 +6,27 @@ import Button from '@mui/material/Button';
 
 const PostComments = ({article_id, updateComments}) => {
     const { user } = useContext(UserContext);
-    const [comment, setComment] = useState('');
+    const [input, setInput] = useState('');
+    const [error, setError] = useState('');
     
     const handleInputChange = (e) => {
-        setComment(e.target.value)
+        setInput(e.target.value)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const newComment = {
             username: user.username,
-            body: comment
+            body: input
         }
         postCommentOnArticle(article_id, newComment)
         .then(() => {
-            updateComments()
-            setComment('')
+            updateComments();
+            setInput('');
+            setError('');
+        })
+        .catch(() => {
+            setError('Failed to post comment. Please try again.')
         })
     }
 
@@ -39,17 +44,18 @@ const PostComments = ({article_id, updateComments}) => {
                 variant="standard"
                 type="text" 
                 name="commentBody"
-                value={comment}
+                value={input}
                 onChange={handleInputChange}
             />
             <Button 
                 type="submit"
                 variant="outlined"
                 size="small"
-                disabled={!comment}>
+                disabled={!input}>
                 Submit
             </Button>
         </form>
+        <p>{error}</p>
         </>
     )
 }
