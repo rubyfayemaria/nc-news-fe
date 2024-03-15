@@ -1,0 +1,15 @@
+.nav {
+    overflow: hidden;
+}
+
+.nav a {
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 19px;
+}
+
+.nav a:hover {
+    color: black;
+    text-decoration: underline;
+}
