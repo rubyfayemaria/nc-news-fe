@@ -25,12 +25,6 @@ const Comments = () => {
         navigate(-1)
     }
 
-    const updateComments = () => {
-        fetchCommentsByArticle(article_id).then((updatedComments) => {
-            setComments(updatedComments)
-        })
-    }
-
     if (comments.length === 0) {
         return (
             <p>No comments have been left on this article yet.</p>
@@ -46,7 +40,7 @@ const Comments = () => {
                 <div key={comment.comment_id} className='comments-box'>
                 <p><b>{comment.author}:</b> {comment.body}</p>
                 {comment.author === user.username && (
-                    <DeleteComment comment_id={comment.comment_id} updateComments={updateComments}/>
+                    <DeleteComment comment_id={comment.comment_id} comments={comments} setComments={setComments}/>
                 )}
                 </div>
             )
