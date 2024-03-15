@@ -3,8 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { fetchCommentsByArticle } from "../../api";
 import PostComments from "../PostComments/PostComments";
 import UserContext from '../Contexts/UserContext'
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
 import './Comments.css'
 import DeleteComment from "../DeleteComment/DeleteComment";
 
@@ -42,7 +40,7 @@ const Comments = () => {
     return (
         <>
         <section>
-        <PostComments article_id={article_id} updateComments={updateComments}/>
+        <PostComments article_id={article_id} comments={comments} setComments={setComments}/>
         {comments.map((comment) => {
             return (
                 <div key={comment.comment_id} className='comments-box'>

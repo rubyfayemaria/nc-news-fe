@@ -4,7 +4,7 @@ import UserContext from "../Contexts/UserContext";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-const PostComments = ({article_id, updateComments}) => {
+const PostComments = ({article_id, updateComments, comments, setComments}) => {
     const { user } = useContext(UserContext);
     const [input, setInput] = useState('');
     const [error, setError] = useState('');
@@ -20,8 +20,8 @@ const PostComments = ({article_id, updateComments}) => {
             body: input
         }
         postCommentOnArticle(article_id, newComment)
-        .then(() => {
-            updateComments();
+        .then((newComment) => {
+            setComments([newComment, ...comments])
             setInput('');
             setError('');
         })
