@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import {fetchArticles, getArticlesByTopic} from "../../api";
 import ArticleCard from "../ArticleCard/ArticleCard";
+import Filter from "../Filter/Filter";
 import './ArticlesList.css'
 
 
@@ -31,6 +32,8 @@ const ArticlesList = () => {
 
     if (isLoading) return <p>Loading...</p>
     return (
+        <>
+        <Filter topic={topicName}/>
         <section>
             {articles.map((article) => {
                 return (
@@ -40,6 +43,7 @@ const ArticlesList = () => {
                 )
             })}
         </section>
+        </>
     )
 }
 
