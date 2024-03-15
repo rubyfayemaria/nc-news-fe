@@ -3,8 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { fetchCommentsByArticle } from "../../api";
 import PostComments from "../PostComments/PostComments";
 import UserContext from '../Contexts/UserContext'
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
 import './Comments.css'
 import DeleteComment from "../DeleteComment/DeleteComment";
 
@@ -27,12 +25,6 @@ const Comments = () => {
         navigate(-1)
     }
 
-    const updateComments = () => {
-        fetchCommentsByArticle(article_id).then((updatedComments) => {
-            setComments(updatedComments)
-        })
-    }
-
     if (comments.length === 0) {
         return (
             <p>No comments have been left on this article yet.</p>
@@ -42,13 +34,13 @@ const Comments = () => {
     return (
         <>
         <section>
-        <PostComments article_id={article_id} updateComments={updateComments}/>
+        <PostComments article_id={article_id} comments={comments} setComments={setComments}/>
         {comments.map((comment) => {
             return (
                 <div key={comment.comment_id} className='comments-box'>
                 <p><b>{comment.author}:</b> {comment.body}</p>
                 {comment.author === user.username && (
-                    <DeleteComment comment_id={comment.comment_id} updateComments={updateComments}/>
+                    <DeleteComment comment_id={comment.comment_id} comments={comments} setComments={setComments}/>
                 )}
                 </div>
             )
