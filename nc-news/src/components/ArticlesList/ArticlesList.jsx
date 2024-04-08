@@ -12,6 +12,7 @@ const ArticlesList = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const topicName = searchParams.get('topic')
+
     
     useEffect(() => {
         setIsLoading(true)
