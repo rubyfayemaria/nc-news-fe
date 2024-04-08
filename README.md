@@ -2,7 +2,7 @@
 
 A news blog which allows for users to browse through articles sorted by topic, vote on articles and also leave comments.
 
-Visit [https://nc-newsblog.netlify.app/] (https://nc-newsblog.netlify.app/) in your web brower to view website.
+Visit [https://nc-newsblog.netlify.app/] in your web brower to view website.
 
 ## Getting Started
 
@@ -34,7 +34,7 @@ npm run dev
 
 ## Backend
 
-You can find the repo for the backend of this project [https://github.com/rubyfayemaria/nc-news](here)
+You can find the repo for the backend of this project here: [https://github.com/rubyfayemaria/nc-news]
 
 ## Requirements
 node version v21.2.0
